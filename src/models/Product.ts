@@ -1,7 +1,3 @@
-// ==========================================================================
-// PRODUCT MODEL INTERFACE (TYPESCRIPT TYPE SAFETY)
-// ==========================================================================
-
 export interface Product {
   id?: number;
   name: string;

@@ -1,10 +1,10 @@
 import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
 
-// Load environment variables from .env file
+//load environment variables from .env file
 dotenv.config();
 
-// Create MySQL connection pool
+//create MySQL connection pool
 export const db = mysql.createPool({
   host: process.env.DB_HOST || 'localhost',
   user: process.env.DB_USER || 'root',

@@ -18,16 +18,16 @@ export class Server {
   }
 
   public start = (): void => {
-    // Enable CORS middleware
+    //enable CORS middleware
     this.app.use(cors());
 
-    // Enable JSON parsing for incoming requests
+    //enable JSON parsing for incoming requests
     this.app.use(express.json());
 
-    // Mount API routes under /api/v1
+    //mount API routes under /api/v1
     this.app.use('/api/v1', this.routes);
 
-    // Start server listener
+    //start server listener
     this.app.listen(this.port, () => {
       console.log(`MySQL2 TypeScript Server running at http://localhost:${this.port}`);
     });

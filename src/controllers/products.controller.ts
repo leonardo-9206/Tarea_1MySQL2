@@ -6,7 +6,7 @@ import type { Product } from '../models/Product.ts';
 export interface ProductRow extends RowDataPacket, Product {}
 
 export class ProductController {
-  // 1. GET /getAll or GET / - Get all active products
+  //GET /getAll or GET / - Get all active products
   async getAll(_req: Request, res: Response) {
     try {
       const [rows] = await db.query<ProductRow[]>('SELECT * FROM products WHERE active = TRUE');
@@ -16,7 +16,7 @@ export class ProductController {
     }
   }
 
-  // 2. GET /getById/:id or GET /:id - Get active product by ID
+  //GET /getById/:id or GET /:id - Get active product by ID
   async getById(req: Request, res: Response) {
     const id = Number(req.params.id);
     if (isNaN(id) || id <= 0) {
@@ -36,7 +36,7 @@ export class ProductController {
     }
   }
 
-  // 3. POST /create or POST / - Create a new product
+  //POST /create or POST / - Create a new product
   async create(req: Request, res: Response) {
     const { name, price, stock, description, brand, img }: Product = req.body;
     if (!name || Number(price) <= 0 || stock === undefined || stock < 0 || !description) {
@@ -54,7 +54,7 @@ export class ProductController {
     }
   }
 
-  // 4. PUT /update/:id or PUT /:id - Update complete product details
+  //PUT /update/:id or PUT /:id - Update complete product details
   async update(req: Request, res: Response) {
     const id = Number(req.params.id);
     const { name, price, stock, description, brand, img }: Product = req.body;
@@ -75,7 +75,7 @@ export class ProductController {
     }
   }
 
-  // 5. DELETE /delete/:id or DELETE /:id - Soft delete product (set active = FALSE)
+  //DELETE /delete/:id or DELETE /:id - Soft delete product (set active = FALSE)
   async deleteProduct(req: Request, res: Response) {
     const id = Number(req.params.id);
     if (isNaN(id) || id <= 0) {
@@ -95,7 +95,7 @@ export class ProductController {
     }
   }
 
-  // 6. PATCH /change-price/:id or PATCH /:id/price - Modify product price only
+  //PATCH /change-price/:id or PATCH /:id/price - Modify product price only
   async changePrice(req: Request, res: Response) {
     const id = Number(req.params.id);
     const { price } = req.body;
