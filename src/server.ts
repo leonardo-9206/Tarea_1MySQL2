@@ -32,4 +32,14 @@ export class Server {
       console.log(`MySQL2 TypeScript Server running at http://localhost:${this.port}`);
     });
   };
+
+  // Get express app instance for testing with supertest
+  public getApp = (): Express => {
+    // Ensure middleware and routes are configured
+    const testApp = express();
+    testApp.use(cors());
+    testApp.use(express.json());
+    testApp.use('/api/v1', this.routes);
+    return testApp;
+  };
 }
